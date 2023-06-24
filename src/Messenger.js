@@ -12,12 +12,11 @@ function Messenger(opts) {
 
   function init() {
     if (isInConvo()) {
-      startChat()
+      startChat();
     }
 
     startBody();
     console.log('Messenger initiated');
-
   }
 
   function isInConvo() {
@@ -38,7 +37,7 @@ function Messenger(opts) {
   }
 
   function stopChat() {
-    chatObserver.disconnect()
+    chatObserver.disconnect();
   }
 
   function stop() {
