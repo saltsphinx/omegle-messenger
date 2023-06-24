@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "simply-pub-sub": "2.0.0"
+  },
+  "name": "omegle-messenger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "saltsphinx",
+  "license": "MIT",
+  "description": "A tool that makes interacting with Omegle web chat easy.",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saltsphinx/omegle-messenger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saltsphinx/omegle-messenger/issues"
+  },
+  "homepage": "https://github.com/saltsphinx/omegle-messenger#readme"
+}
