@@ -5,8 +5,10 @@ function Messenger(opts) {
   const bodyObserver = new MutationObserver(bodyCallback);
   const chatObserver = new MutationObserver(chatCallback);
   const msgEvent = Event();
+  const startEvent = Event();
+  const endEvent = Event();
+  let chatting = false;
   let chatBtn;
-  let textarea;
   let sendBtn;
   let endBtn;
 
@@ -20,7 +22,7 @@ function Messenger(opts) {
   }
 
   function isInConvo() {
-    return body.classList.contains('inconversation');
+    return isInconvo = body.classList.contains('inconversation');
   }
 
   function startBody() {
@@ -47,7 +49,18 @@ function Messenger(opts) {
   }
 
   function bodyCallback(recordList) {
-    recordList.forEach((record) => isInConvo() ? startChat() : stopChat());
+    recordList.forEach((record) => {
+      if (isInConvo()) {
+        if (chatting) return;
+        chatting = true;
+        startChat();
+        startEvent();
+      } else {
+        chatting = false;
+        stopChat();
+        endEvent();
+      }
+    });
   }
 
   function chatCallback(recordList) {
@@ -57,15 +70,19 @@ function Messenger(opts) {
         const child = node.childNodes[0];
 
         if (child.className == 'strangermsg' || child.className == 'youmsg') {
-          msgEvent({ elem: child, class: child.className, msg: child.childNodes[2].textContent });
+          msgEvent({ elem: child, msgClass: child.className, msg: child.childNodes[2].textContent });
         }
       });
     });
   }
 
   function send(msg) {
-    document.querySelector('.chatmsg').value = msg;
+    const textarea = document.querySelector('.chatmsg');
+    const prevText = textarea.value;
+
+    textarea.value = msg;
     sendBtn.click();
+    textarea.value = prevText;
   }
   
 
@@ -78,12 +95,20 @@ function Messenger(opts) {
     endBtn.click();
   }
 
+  function newChat() {
+    endChat();
+    endBtn.click();
+  }
+
   return {
     init,
     stop,
     send,
     endChat,
+    newChat,
     msgEvent,
+    startEvent,
+    endEvent,
   };
 }
 
