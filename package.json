@@ -3,7 +3,7 @@
     "simply-pub-sub": "2.0.0"
   },
   "name": "omegle-messenger",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "src/Messenger.js",
   "keywords": [],
   "author": "saltsphinx",

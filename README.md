@@ -14,10 +14,11 @@ Install omegle-messenger using npm:
 - Quitting the current chat
 
 ## Plans
+- √ Add new events for entering and ending chats
+- Add input event for each time a character is entered
 - Allow for processing of status messages
 - Options parameter that enables or disables events
-- Add new events for entering and ending chats and when the user sends a message
-- Allow for processing of user's message before it's sent
+- Allow processing of user messages before they're submitted
 - Allow for adding and removing of messages on user's client
 
 # API
@@ -44,7 +45,7 @@ msgEvent(...args)
 - It has a subscribe function that accepts a name and a function.
 - The event passes a message object with information about the message. 
   - elem, a reference paragraph element. Note, it's a reference to the element contains both the element with the message and the one that contains the 'You:' or 'Stranger' also.
-  - class, the class of elem. Either 'youmsg' or 'strangermsg'
+  - msgClass, the class of elem. Either 'youmsg' or 'strangermsg'
   - msg, reference to the message text
 - It has an unsubscribe function that takes a string as a parameter, and removes the function stored under that name
 - Check out simply-pub-subs repo for more information about it's API.
